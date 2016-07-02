@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.3.5.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'application'
+
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+//applicationDefaultJvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"]
+
+repositories {
+        mavenCentral()
+}
+
+ext {
+    commonsLangVersion = '3.4'
+    slf4jVersion = '1.7.19'
+    unirestVersion = '1.4.8'
+    jsonioVersion = '4.4.0'
+    mockitoVersion = '1.10.19'
+    assertjVersion = '3.3.0'
+    jsonassertVersion = '1.3.0'
+    junitVersion = '4.12'
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jetty'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-logging'
+
+    compile group: 'org.springframework', name: 'spring-context-support'
+
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: commonsLangVersion
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    compile group: 'com.mashape.unirest', name: 'unirest-java', version: unirestVersion
+    compile group: 'com.cedarsoftware', name: 'json-io', version: jsonioVersion
+   
+    testCompile group: 'org.springframework', name: 'spring-test'
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+    testCompile group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
+    testCompile group: 'org.assertj', name:'assertj-core', version: assertjVersion
+    testCompile group: 'org.skyscreamer', name:'jsonassert', version: jsonassertVersion
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.11"
+}

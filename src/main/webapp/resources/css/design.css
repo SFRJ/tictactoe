@@ -1,0 +1,116 @@
+body{
+	background-color: #EEE;
+}
+#player-1 {
+	background-color:white;
+	width:25%;
+	height:30%;
+	float: left;
+	margin-left: auto;
+	text-align:center;
+	font-size: 4vw;
+}
+
+#player-2 {
+	background-color:white;
+	width:25%;
+	height:30%;
+	float: left;
+	margin-left: auto;
+	text-align:center;
+	font-size: 4vw;
+}
+
+#game {
+	background-color:white;
+	width:50%;
+	height:50%;
+	margin-left: auto;
+	margin-right: auto;
+	float: left;
+}
+
+#top-left{
+	width: 30%;
+	height: 30%;
+	float: left;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	margin-left: 20px;
+	margin-top: 20px;
+	text-align:center;
+	font-size: 10vw;
+}
+#top{
+	width: 30%;
+	height: 30%;
+	float: left;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	margin-top: 20px;
+	text-align:center;
+	font-size: 10vw;
+}
+#top-right{
+	width: 30%;
+	height: 30%;
+	float: left;
+	border-bottom-style: solid;
+	margin-top: 20px;
+	margin-right: 20px;
+	text-align:center;
+	font-size: 10vw;
+}
+#left{
+	width: 30%;
+	height: 30%;
+	float: left;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	margin-left: 20px;
+	text-align:center;
+	font-size: 10vw;
+}
+#middle{
+	width: 30%;
+	height: 30%;
+	float: left;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	text-align:center;
+	font-size: 10vw;
+}
+#right{
+	width: 30%;
+	height: 30%;
+	float: left;
+	border-bottom-style: solid;
+	margin-right: 20px;
+	text-align:center;
+	font-size: 10vw;
+}
+#bottom-left{
+	width: 30%;
+	height: 30%;
+	float: left;
+	border-right-style: solid;
+	margin-left: 20px;
+	text-align:center;
+	font-size: 10vw;
+}
+#bottom{
+	width: 30%;
+	height: 30%;
+	float: left;
+	border-right-style: solid;
+	text-align:center;
+	font-size: 10vw;
+}
+#bottom-right{
+	width: 30%;
+	height: 30%;
+	float: left;
+	margin-right: 20px;
+	text-align:center;
+	font-size: 10vw;
+}

@@ -19,7 +19,11 @@ targetCompatibility = 1.8
 //applicationDefaultJvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"]
 
 repositories {
+        mavenLocal()
         mavenCentral()
+        maven {
+            url "http://repo.bodar.com"
+        }
 }
 
 ext {
@@ -31,6 +35,9 @@ ext {
     assertjVersion = '3.3.0'
     jsonassertVersion = '1.3.0'
     junitVersion = '4.12'
+    yatspecVersion = '217'
+    seleniumJavaVersion = '2.48.2'
+    seleniumVersion = '2.48.2'
 }
 
 dependencies {
@@ -53,6 +60,8 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
     testCompile group: 'org.assertj', name:'assertj-core', version: assertjVersion
     testCompile group: 'org.skyscreamer', name:'jsonassert', version: jsonassertVersion
+    testCompile group: 'com.googlecode.yatspec', name:'yatspec', version: yatspecVersion
+    testCompile group: 'org.seleniumhq.selenium', name:'selenium-java', version: seleniumVersion
 }
 
 task wrapper(type: Wrapper) {

@@ -1,6 +1,11 @@
+html {
+    height: 100%;
+}
 body{
 	background-color: #EEE;
+	height:100%;
 }
+
 #player-1 {
 	background-color:white;
 	width:25%;

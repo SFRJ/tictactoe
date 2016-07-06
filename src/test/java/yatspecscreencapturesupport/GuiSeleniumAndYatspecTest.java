@@ -25,8 +25,6 @@ public class GuiSeleniumAndYatspecTest extends TestState implements WithCustomRe
     public void setupSelenium() throws InterruptedException {
         driver = new FirefoxDriver();
         selenium = new WebDriverBackedSelenium(driver, START_URL);
-        selenium.open(START_URL);
-        selenium.waitForPageToLoad("2000");
     }
 
     @After
@@ -34,9 +32,9 @@ public class GuiSeleniumAndYatspecTest extends TestState implements WithCustomRe
         selenium.stop();
     }
 
-    public void takeScreenshoot() throws Exception {
+    public void takeScreenshoot(String screenshootTitle) throws Exception {
         String imageData = selenium.captureScreenshotToString();
-        this.capturedInputAndOutputs.add(ScreenshootHolder.INTERESTING_GIVENS_KEY, new ScreenshootHolder(imageData));
+        this.capturedInputAndOutputs.add(screenshootTitle, new ScreenshootHolder(imageData));
         System.out.println("Captured screen shoot");
     }
 

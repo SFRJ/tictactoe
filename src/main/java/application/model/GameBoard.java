@@ -1,8 +1,8 @@
-package application.controllers.dtos;
+package application.model;
 
 import java.io.Serializable;
 
-public class GameBoardDto implements Serializable {
+public class GameBoard implements Serializable {
 
     private String player1;
     private String player2;
@@ -16,10 +16,21 @@ public class GameBoardDto implements Serializable {
     private String bottom;
     private String bottomright;
 
-    public GameBoardDto() {
+    public GameBoard() {
+        this.player1 = "0";
+        this.player2 = "0";
+        this.topleft = "";
+        this.top = "";
+        this.topright = "";
+        this.left = "";
+        this.middle = "";
+        this.right = "";
+        this.bottomleft = "";
+        this.bottom = "";
+        this.bottomright = "";
     }
 
-    public GameBoardDto(String player1, String player2, String topleft, String top, String topright, String left, String middle, String right, String bottomleft, String bottom, String bottomright) {
+    public GameBoard(String player1, String player2, String topleft, String top, String topright, String left, String middle, String right, String bottomleft, String bottom, String bottomright) {
         this.player1 = player1;
         this.player2 = player2;
         this.topleft = topleft;

@@ -1,5 +1,6 @@
 package application.services;
 
+import application.model.GameBoard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +21,8 @@ public class GameResolvingService {
                 .convertToJson(gameBoardService.updateBoard(position));
     }
 
+    public String resolve(GameBoard game) {
+        return modelToJsonConversionService
+                .convertToJson(gameBoardService.updateBoard(game));
+    }
 }

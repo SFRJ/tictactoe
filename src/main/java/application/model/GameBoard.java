@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class GameBoard implements Serializable {
 
+    private String gameId;
+    private String selection;
     private String player1;
     private String player2;
     private String topleft;
@@ -30,7 +32,9 @@ public class GameBoard implements Serializable {
         this.bottomright = "";
     }
 
-    public GameBoard(String player1, String player2, String topleft, String top, String topright, String left, String middle, String right, String bottomleft, String bottom, String bottomright) {
+    public GameBoard(String gameId, String selection, String player1, String player2, String topleft, String top, String topright, String left, String middle, String right, String bottomleft, String bottom, String bottomright) {
+        this.gameId = gameId;
+        this.selection = selection;
         this.player1 = player1;
         this.player2 = player2;
         this.topleft = topleft;
@@ -130,5 +134,21 @@ public class GameBoard implements Serializable {
 
     public void setBottomright(String bottomright) {
         this.bottomright = bottomright;
+    }
+
+    public String getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(String gameId) {
+        this.gameId = gameId;
+    }
+
+    public String getSelection() {
+        return selection;
+    }
+
+    public void setSelection(String selection) {
+        this.selection = selection;
     }
 }

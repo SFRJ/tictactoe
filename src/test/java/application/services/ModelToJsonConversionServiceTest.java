@@ -28,7 +28,7 @@ public class ModelToJsonConversionServiceTest {
     }
 
     private void givenAGameBoard() {
-        gameBoard = new GameBoard("1","3","x","x","x","x","x","x","x","x","x");
+        gameBoard = new GameBoard(gameId, selection, "1","3","x","x","x","x","x","x","x","x","x");
     }
 
     private void whenWeConvertToJson() {

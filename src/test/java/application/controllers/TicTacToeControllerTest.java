@@ -5,14 +5,17 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.http.ResponseEntity;
 
+import javax.servlet.http.HttpSession;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpStatus.OK;
 
 public class TicTacToeControllerTest {
 
     public static final String RESPONSE_JSON = "response json";
-    private GameResolvingService gameResolvingService = Mockito.mock(GameResolvingService.class);
+    private GameResolvingService gameResolvingService = mock(GameResolvingService.class);
     private TicTacToeController controller = new TicTacToeController(gameResolvingService);
     private String position;
     private ResponseEntity<String> responseFromController;
@@ -32,7 +35,7 @@ public class TicTacToeControllerTest {
 
     //whens
     private void whenControlerReceivesPosition() {
-        responseFromController = controller.play(position);
+        responseFromController = controller.play(mock(HttpSession.class), position);
     }
 
     //thens

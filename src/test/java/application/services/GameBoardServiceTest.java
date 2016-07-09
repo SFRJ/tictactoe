@@ -13,9 +13,6 @@ public class GameBoardServiceTest {
     private String selectedPosition;
     private GameBoardService gameBoardService = new GameBoardService();
     private GameBoard result;
-    private List<String> positions = asList("top", "topright", "left",
-            "middle", "right", "bottomleft",
-            "bottom","bottomright");
 
     @Test
     public void firstArrivingPositionIsAlwaysAnX() throws Exception {

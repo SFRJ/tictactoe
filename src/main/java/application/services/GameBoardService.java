@@ -1,13 +1,17 @@
 package application.services;
 
 import application.model.GameBoard;
-import org.springframework.context.annotation.Scope;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.session.Session;
+import org.springframework.session.SessionRepository;
 import org.springframework.stereotype.Component;
 
 import static java.lang.Integer.valueOf;
 
 @Component
 public class GameBoardService {
+
+    private SessionRepository sessionRepository;
 
     public static final String X = "x";
     public static final String O = "o";
@@ -16,10 +20,16 @@ public class GameBoardService {
     private GameBoard gameBoard;
 
     public GameBoardService() {
-        gameBoard = new GameBoard();
+    }
+
+    @Autowired
+    public GameBoardService(SessionRepository sessionRepository) {
+        this.sessionRepository = sessionRepository;
     }
 
     public GameBoard updateBoard(String position) {
+        manageGameSession();
+
         if(alreadySelected(position)) {
             return gameBoard;
         }
@@ -29,6 +39,16 @@ public class GameBoardService {
             empty(gameBoard);
         }
         return gameBoard;
+
+    }
+
+    private void manageGameSession() {
+        Session session = sessionRepository.getSession("uid");
+        gameBoard = session.getAttribute("game");
+        if(gameBoard == null) {
+            gameBoard = new GameBoard();
+            session.setAttribute("game",gameBoard);
+        }
     }
 
     private boolean alreadySelected(String position) {

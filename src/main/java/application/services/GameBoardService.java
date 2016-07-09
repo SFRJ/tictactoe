@@ -1,6 +1,7 @@
 package application.services;
 
 import application.model.GameBoard;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import static java.lang.Integer.valueOf;
@@ -46,38 +47,70 @@ public class GameBoardService {
     }
 
     private void resolveScore() {
-        if(completedFirstRow(X))
+        if(completedFirstRow(X)) {
             increasePlayer1Score();
-        else if(completedSecondRow(X))
+            empty(gameBoard);
+        }
+        else if(completedSecondRow(X)) {
             increasePlayer1Score();
-        else if(completedThirdRow(X))
+            empty(gameBoard);
+        }
+        else if(completedThirdRow(X)) {
             increasePlayer1Score();
-        else if(completedFirstColumn(X))
+            empty(gameBoard);
+        }
+        else if(completedFirstColumn(X)) {
             increasePlayer1Score();
-        else if(completedSecondColumn(X))
+            empty(gameBoard);
+        }
+        else if(completedSecondColumn(X)) {
             increasePlayer1Score();
-        else if(completedThirdColumn(X))
+            empty(gameBoard);
+        }
+        else if(completedThirdColumn(X)) {
             increasePlayer1Score();
-        else if(completedFirstDiagonal(X))
+            empty(gameBoard);
+        }
+        else if(completedFirstDiagonal(X)) {
             increasePlayer1Score();
-        else if(completedSecondDiagonal(X))
+            empty(gameBoard);
+        }
+        else if(completedSecondDiagonal(X)) {
             increasePlayer1Score();
-        else if(completedFirstRow(O))
+            empty(gameBoard);
+        }
+        else if(completedFirstRow(O)) {
             increasePlayer2Score();
-        else if(completedSecondRow(O))
+            empty(gameBoard);
+        }
+        else if(completedSecondRow(O)) {
             increasePlayer2Score();
-        else if(completedThirdRow(O))
+            empty(gameBoard);
+        }
+        else if(completedThirdRow(O)) {
             increasePlayer2Score();
-        else if(completedFirstColumn(O))
+            empty(gameBoard);
+        }
+        else if(completedFirstColumn(O)) {
             increasePlayer2Score();
-        else if(completedSecondColumn(O))
+            empty(gameBoard);
+        }
+        else if(completedSecondColumn(O)) {
             increasePlayer2Score();
-        else if(completedThirdColumn(O))
+            empty(gameBoard);
+        }
+        else if(completedThirdColumn(O)) {
             increasePlayer2Score();
-        else if(completedFirstDiagonal(O))
+            empty(gameBoard);
+        }
+        else if(completedFirstDiagonal(O)) {
             increasePlayer2Score();
-        else if(completedSecondDiagonal(O))
+            empty(gameBoard);
+        }
+        else if(completedSecondDiagonal(O)) {
             increasePlayer2Score();
+            empty(gameBoard);
+        }
     }
 
     private boolean completedSecondDiagonal(String symbol) {

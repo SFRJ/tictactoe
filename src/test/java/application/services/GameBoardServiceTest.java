@@ -7,7 +7,6 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-import static org.junit.Assert.fail;
 
 public class GameBoardServiceTest {
 
@@ -40,15 +39,6 @@ public class GameBoardServiceTest {
     }
 
     @Test
-    public void allPositionsCanBeSelected() throws Exception {
-        for (int position = 0; position < positions.size(); position++) {
-            givenSelectedPosition(positions.get(position));
-            whenBoardIsUpdated();
-        }
-        thenTheBoardContainsThePositionsSelectedByThePlayers();
-    }
-
-    @Test
     public void returnsEmptyBoardWhenAllPositionsAreSelected() throws Exception {
         givenAllPositionsButOneAreSelected();
         whenAPlayerSelectsTheLastPosition();
@@ -61,6 +51,7 @@ public class GameBoardServiceTest {
         givenPlayer1Has2XInFirstRow();
         whenPlayer1Makes3rdXInFirstRow();
         thenTheScoreForPlayer1IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -68,6 +59,7 @@ public class GameBoardServiceTest {
         givenPlayer1Has2XinSecondRow();
         whenPlayer1Makes3rdXInSecondRow();
         thenTheScoreForPlayer1IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -75,6 +67,7 @@ public class GameBoardServiceTest {
         givenPlayer1Has2XinThirdRow();
         whenPlayer1Makes3rdXInThirdRow();
         thenTheScoreForPlayer1IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -82,6 +75,7 @@ public class GameBoardServiceTest {
         givenPlayer1Has2XinFirstColumn();
         whenPlayer1Makes3rdXInFirstColumn();
         thenTheScoreForPlayer1IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -89,6 +83,7 @@ public class GameBoardServiceTest {
         givenPlayer1Has2XinSecondColumn();
         whenPlayer1Makes3rdXInSecondColumn();
         thenTheScoreForPlayer1IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -96,6 +91,7 @@ public class GameBoardServiceTest {
         givenPlayer1Has2XinThirdColumn();
         whenPlayer1Makes3rdXInThirdColumn();
         thenTheScoreForPlayer1IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -103,6 +99,7 @@ public class GameBoardServiceTest {
         givenPlayer1Has2XinFirstDiagonal();
         whenPlayer1Makes3rdXInFirstDiagonal();
         thenTheScoreForPlayer1IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -110,6 +107,7 @@ public class GameBoardServiceTest {
         givenPlayer1Has2XinSecondDiagonal();
         whenPlayer1Makes3rdXInSecondDiagonal();
         thenTheScoreForPlayer1IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
 
@@ -118,6 +116,7 @@ public class GameBoardServiceTest {
         givenPlayer2Has2OInFirstRow();
         whenPlayer2Makes3rdOInFirstRow();
         thenTheScoreForPlayer2IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -125,6 +124,7 @@ public class GameBoardServiceTest {
         givenPlayer2Has2OinSecondRow();
         whenPlayer2Makes3rdOInSecondRow();
         thenTheScoreForPlayer2IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -132,6 +132,7 @@ public class GameBoardServiceTest {
         givenPlayer2Has2OinThirdRow();
         whenPlayer2Makes3rdOInThirdRow();
         thenTheScoreForPlayer2IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -139,6 +140,7 @@ public class GameBoardServiceTest {
         givenPlayer2Has2OinFirstColumn();
         whenPlayer2Makes3rdOInFirstColumn();
         thenTheScoreForPlayer2IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -146,6 +148,7 @@ public class GameBoardServiceTest {
         givenPlayer2Has2OinSecondColumn();
         whenPlayer2Makes3rdOInSecondColumn();
         thenTheScoreForPlayer2IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -153,6 +156,7 @@ public class GameBoardServiceTest {
         givenPlayer2Has2OinThirdColumn();
         whenPlayer2Makes3rdOInThirdColumn();
         thenTheScoreForPlayer2IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -160,6 +164,7 @@ public class GameBoardServiceTest {
         givenPlayer2Has2OinFirstDiagonal();
         whenPlayer2Makes3rdOInFirstDiagonal();
         thenTheScoreForPlayer2IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     @Test
@@ -167,6 +172,7 @@ public class GameBoardServiceTest {
         givenPlayer2Has2OinSecondDiagonal();
         whenPlayer2Makes3rdOInSecondDiagonal();
         thenTheScoreForPlayer2IsIncreased();
+        thenTheBoardReturnsEmpty();
     }
 
     //game rules end
@@ -318,15 +324,17 @@ public class GameBoardServiceTest {
         this.selectedPosition = "topleft";
     }
 
-    private void givenSelectedPosition(String selectedPosition) {
-        this.selectedPosition = selectedPosition;
-    }
-
     private void givenAllPositionsButOneAreSelected() {
-        for (int position = 0; position < positions.size(); position++) {
-            givenSelectedPosition(positions.get(position));
-            gameBoardService.updateBoard(selectedPosition);
-        }
+            gameBoardService.updateBoard("bottomright");
+            gameBoardService.updateBoard("bottom");
+            gameBoardService.updateBoard("bottomleft");
+
+            gameBoardService.updateBoard("right");
+            gameBoardService.updateBoard("middle");
+            gameBoardService.updateBoard("left");
+
+            gameBoardService.updateBoard("top");
+            gameBoardService.updateBoard("topright");
     }
 
     //whens
@@ -438,21 +446,6 @@ public class GameBoardServiceTest {
     private void thenTheScoreForPlayer1IsIncreased() {
         assertThat(result.getPlayer1()).isEqualTo("1");
     }
-
-    private void thenTheBoardContainsThePositionsSelectedByThePlayers() {
-        //Top left is already tested in another test
-        assertThat(result.getTop()).isEqualTo("x");
-        assertThat(result.getTopright()).isEqualTo("o");
-
-        assertThat(result.getLeft()).isEqualTo("x");
-        assertThat(result.getMiddle()).isEqualTo("o");
-        assertThat(result.getRight()).isEqualTo("x");
-
-        assertThat(result.getBottomleft()).isEqualTo("o");
-        assertThat(result.getBottom()).isEqualTo("x");
-        assertThat(result.getBottomright()).isEqualTo("o");
-    }
-
 
     private void thenTheBoardReturnsEmpty() {
         assertThat(result.getTop()).isEqualTo("");

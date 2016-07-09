@@ -4,15 +4,8 @@ import application.services.GameResolvingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
-import java.util.UUID;
-
-import static java.util.UUID.randomUUID;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
@@ -37,18 +30,9 @@ public class TicTacToeController {
 
     @RequestMapping(value = {"play"}, consumes = APPLICATION_JSON_UTF8_VALUE,
             produces = APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.POST)
-    public @ResponseBody ResponseEntity<String> play(HttpSession session, @RequestBody String selection) {
-        createUserSession(session);
+    public @ResponseBody ResponseEntity<String> play(@RequestBody String selection) {
         String json = gameResolvingService.resolve(selection);
         return new ResponseEntity<>(json, OK);
-    }
-
-    private void createUserSession(HttpSession session) {
-        UUID uid = (UUID) session.getAttribute("uid");
-        if(uid == null) {
-            uid = randomUUID();
-        }
-        session.setAttribute("uid",uid);
     }
 
 }

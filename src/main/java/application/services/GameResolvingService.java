@@ -16,11 +16,6 @@ public class GameResolvingService {
         this.modelToJsonConversionService = modelToJsonConversionService;
     }
 
-    public String resolve(String position) {
-        return modelToJsonConversionService
-                .convertToJson(gameBoardService.updateBoard(position));
-    }
-
     public String resolve(GameBoard game) {
         return modelToJsonConversionService
                 .convertToJson(gameBoardService.updateBoard(game));

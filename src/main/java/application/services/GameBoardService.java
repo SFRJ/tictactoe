@@ -41,19 +41,6 @@ public class GameBoardService {
         return currentGame;
     }
 
-    public GameBoard updateBoard(String position) {
-//        if(alreadySelected(position)) {
-//            return gameBoard;
-//        }
-//        resolvePosition(position);
-//        resolveScore();
-//        if(isFull(gameBoard)) {
-//            empty(gameBoard);
-//        }
-//        return gameBoard;
-        return null;
-    }
-
     private boolean alreadySelected(GameBoard currentGame) {
         switch (currentGame.getSelection()) {
             case "topleft": {return !currentGame.getTopleft().isEmpty();}

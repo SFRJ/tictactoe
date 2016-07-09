@@ -23,11 +23,11 @@ public class GameResolvingServiceTest {
     }
 
     private void givenTheGameBoardServiceReturnsAGameBoard() {
-        Mockito.when(gameBoardService.updateBoard(anyString())).thenReturn(new GameBoard());
+        Mockito.when(gameBoardService.updateBoard(any(GameBoard.class))).thenReturn(new GameBoard());
     }
 
     private void whenTheResolverIsCalled() {
-        gameResolvingService.resolve("some position");
+        gameResolvingService.resolve(new GameBoard());
     }
 
     private void thenTheConverterReceivesAGameBoard() {

@@ -1,21 +1,30 @@
 package application.services;
 
 import application.model.GameBoard;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-
-import static java.util.Arrays.asList;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class GameBoardServiceTest {
 
-    private String selectedPosition;
+    public static final String TOPLEFT = "topleft";
+    public static final String TOPRIGHT = "topright";
+    public static final String RIGHT = "right";
+    public static final String MIDDLE = "middle";
+    public static final String LEFT = "left";
+    public static final String TOP = "top";
+    public static final String BOTTOMRIGHT = "bottomright";
+    public static final String BOTTOM = "bottom";
+    public static final String BOTTOMLEFT = "bottomleft";
     private GameBoardService gameBoardService = new GameBoardService();
+    private GameBoard gameBoard;
     private GameBoard result;
-    private List<String> positions = asList("top", "topright", "left",
-            "middle", "right", "bottomleft",
-            "bottom","bottomright");
+
+    @Before
+    public void setUp() throws Exception {
+        gameBoard = new GameBoard();
+    }
 
     @Test
     public void firstArrivingPositionIsAlwaysAnX() throws Exception {
@@ -186,241 +195,241 @@ public class GameBoardServiceTest {
 
     //givens
     private void givenFirstMoveAlreadyDone() {
-        gameBoardService.updateBoard("topleft");
+        play(TOPLEFT);
     }
 
     private void givenFirstPlayerSelectsPosition() {
-        gameBoardService.updateBoard("topleft");
+        play(TOPLEFT);
     }
 
     private void givenPlayer2Has2OinSecondDiagonal() {
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("topright");
-        gameBoardService.updateBoard("right");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("left");
+        play(TOPLEFT);
+        play(TOPRIGHT);
+        play(RIGHT);
+        play(MIDDLE);
+        play(LEFT);
     }
 
     private void givenPlayer2Has2OinFirstDiagonal() {
-        gameBoardService.updateBoard("topright");
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("right");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("left");
+        play(TOPRIGHT);
+        play(TOPLEFT);
+        play(RIGHT);
+        play(MIDDLE);
+        play(LEFT);
     }
 
     private void givenPlayer2Has2OinThirdColumn() {
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("topright");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("right");
-        gameBoardService.updateBoard("left");
+        play(TOPLEFT);
+        play(TOPRIGHT);
+        play(MIDDLE);
+        play(RIGHT);
+        play(LEFT);
     }
 
     private void givenPlayer2Has2OinSecondColumn() {
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("top");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("bottomright");
+        play(TOPLEFT);
+        play(TOP);
+        play(LEFT);
+        play(MIDDLE);
+        play(BOTTOMRIGHT);
     }
 
     private void givenPlayer2Has2OinFirstColumn() {
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("bottom");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("topright");
+        play(MIDDLE);
+        play(TOPLEFT);
+        play(BOTTOM);
+        play(LEFT);
+        play(TOPRIGHT);
     }
 
     private void givenPlayer2Has2OinThirdRow() {
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("bottomleft");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("bottom");
-        gameBoardService.updateBoard("middle");
+        play(TOPLEFT);
+        play(BOTTOMLEFT);
+        play(LEFT);
+        play(BOTTOM);
+        play(MIDDLE);
     }
 
     private void givenPlayer2Has2OinSecondRow() {
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("top");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("bottom");
+        play(TOPLEFT);
+        play(LEFT);
+        play(TOP);
+        play(MIDDLE);
+        play(BOTTOM);
     }
 
     private void givenPlayer2Has2OInFirstRow() {
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("top");
-        gameBoardService.updateBoard("bottom");
+        play(LEFT);
+        play(TOPLEFT);
+        play(MIDDLE);
+        play(TOP);
+        play(BOTTOM);
     }
 
     private void givenPlayer1Has2XinFirstDiagonal() {
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("bottom");
+        play(TOPLEFT);
+        play(LEFT);
+        play(MIDDLE);
+        play(BOTTOM);
     }
 
     private void givenPlayer1Has2XinSecondDiagonal() {
-        gameBoardService.updateBoard("topright");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("bottom");
+        play(TOPRIGHT);
+        play(LEFT);
+        play(MIDDLE);
+        play(BOTTOM);
     }
 
     private void givenPlayer1Has2XinThirdColumn() {
-        gameBoardService.updateBoard("topright");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("right");
-        gameBoardService.updateBoard("middle");
+        play(TOPRIGHT);
+        play(LEFT);
+        play(RIGHT);
+        play(MIDDLE);
     }
 
     private void givenPlayer1Has2XinSecondColumn() {
-        gameBoardService.updateBoard("top");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("right");
+        play(TOP);
+        play(LEFT);
+        play(MIDDLE);
+        play(RIGHT);
     }
 
     private void givenPlayer1Has2XinFirstColumn() {
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("bottom");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("middle");
+        play(TOPLEFT);
+        play(BOTTOM);
+        play(LEFT);
+        play(MIDDLE);
     }
 
     private void givenPlayer1Has2XinThirdRow() {
-        gameBoardService.updateBoard("bottomleft");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("bottom");
-        gameBoardService.updateBoard("middle");
+        play(BOTTOMLEFT);
+        play(LEFT);
+        play(BOTTOM);
+        play(MIDDLE);
     }
 
     private void givenPlayer1Has2XInFirstRow() {
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("top");
-        gameBoardService.updateBoard("middle");
+        play(TOPLEFT);
+        play(LEFT);
+        play(TOP);
+        play(MIDDLE);
     }
 
     private void givenPlayer1Has2XinSecondRow() {
-        gameBoardService.updateBoard("left");
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("middle");
-        gameBoardService.updateBoard("top");
+        play(LEFT);
+        play(TOPLEFT);
+        play(MIDDLE);
+        play(TOP);
     }
 
-
     private void givenFirstTwoMoveAreAlreadyDone() {
-        gameBoardService.updateBoard("topleft");
-        gameBoardService.updateBoard("top");
+        play(TOPLEFT);
+        play(TOP);
     }
 
 
     private void givenUserSelectsTopLeftPosition() {
-        this.selectedPosition = "topleft";
+        gameBoard.setSelection(TOPLEFT);
     }
 
+
     private void givenAllPositionsButOneAreSelected() {
-            gameBoardService.updateBoard("bottomright");
-            gameBoardService.updateBoard("bottom");
-            gameBoardService.updateBoard("bottomleft");
+            play(BOTTOMRIGHT);
+            play(BOTTOM);
+            play(BOTTOMLEFT);
 
-            gameBoardService.updateBoard("right");
-            gameBoardService.updateBoard("middle");
-            gameBoardService.updateBoard("left");
+            play(RIGHT);
+            play(MIDDLE);
+            play(LEFT);
 
-            gameBoardService.updateBoard("top");
-            gameBoardService.updateBoard("topright");
+            play(TOP);
+            play(TOPRIGHT);
     }
 
     //whens
     private void whenBoardIsUpdated() {
-        result = gameBoardService.updateBoard(selectedPosition);
+        result = gameBoardService.updateBoard(gameBoard);
     }
 
     private void whenSecondPlayerSelectsSamePosition() {
-        result = gameBoardService.updateBoard("topleft");
+        result = play(TOPLEFT);
     }
 
     private void whenPlayer2Makes3rdOInFirstDiagonal() {
-        result = gameBoardService.updateBoard("bottomright");
+        result = play(BOTTOMRIGHT);
     }
 
     private void whenPlayer2Makes3rdOInSecondDiagonal() {
-        result = gameBoardService.updateBoard("bottomleft");
+        result = play(BOTTOMLEFT);
     }
 
     private void whenPlayer2Makes3rdOInThirdColumn() {
-        result = gameBoardService.updateBoard("bottomright");
+        result = play(BOTTOMRIGHT);
     }
 
     private void whenPlayer2Makes3rdOInFirstColumn() {
-        result = gameBoardService.updateBoard("bottomleft");
+        result = play(BOTTOMLEFT);
     }
 
     private void whenPlayer2Makes3rdOInSecondColumn() {
-        result = gameBoardService.updateBoard("bottom");
+        result = play(BOTTOM);
     }
 
     private void whenPlayer2Makes3rdOInThirdRow() {
-        result = gameBoardService.updateBoard("bottomright");
+        result = play(BOTTOMRIGHT);
     }
 
     private void whenPlayer1Makes3rdXInSecondDiagonal() {
-        result = gameBoardService.updateBoard("bottomleft");
+        result = play(BOTTOMLEFT);
     }
 
     private void whenPlayer2Makes3rdOInFirstRow() {
-        result = gameBoardService.updateBoard("topright");
+        result = play(TOPRIGHT);
     }
 
     private void whenPlayer1Makes3rdXInFirstDiagonal() {
-        result = gameBoardService.updateBoard("bottomright");
+        result = play(BOTTOMRIGHT);
     }
 
     private void whenPlayer1Makes3rdXInSecondColumn() {
-        result = gameBoardService.updateBoard("bottom");
+        result = play(BOTTOM);
     }
-
 
     private void whenPlayer1Makes3rdXInThirdColumn() {
-        result = gameBoardService.updateBoard("bottomright");
+        result = play(BOTTOMRIGHT);
     }
 
+
     private void whenPlayer1Makes3rdXInFirstColumn() {
-        result = gameBoardService.updateBoard("bottomleft");
+        result = play(BOTTOMLEFT);
     }
 
     private void whenPlayer1Makes3rdXInSecondRow() {
-        result = gameBoardService.updateBoard("right");
+        result = play(RIGHT);
     }
 
     private void whenAPlayerSelectsTheLastPosition() {
-        result = gameBoardService.updateBoard("topleft");
+        result = play(TOPLEFT);
     }
 
     private void whenPlayer1Makes3rdXInThirdRow() {
-        result = gameBoardService.updateBoard("bottomright");
+        result = play(BOTTOMRIGHT);
     }
 
     private void whenSecondMoveHappens() {
-        result = gameBoardService.updateBoard("topright");
+        result = play(TOPRIGHT);
     }
 
     private void whenThirdMoveHappens() {
-        result = gameBoardService.updateBoard("topright");
+        result = play(TOPRIGHT);
     }
 
     private void whenPlayer1Makes3rdXInFirstRow() {
-        result = gameBoardService.updateBoard("topright");
+        result = play(TOPRIGHT);
     }
 
     private void whenPlayer2Makes3rdOInSecondRow() {
-        result = gameBoardService.updateBoard("right");
+        result = play(RIGHT);
     }
 
     //thens
@@ -474,5 +483,10 @@ public class GameBoardServiceTest {
         assertThat(result.getBottomleft()).isEqualTo("");
         assertThat(result.getBottom()).isEqualTo("");
         assertThat(result.getBottomright()).isEqualTo("");
+    }
+
+    private GameBoard play(String selection) {
+        gameBoard.setSelection(selection);
+        return gameBoardService.updateBoard(gameBoard);
     }
 }

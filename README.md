@@ -12,10 +12,11 @@ TO RUN THE APP:
 1) Navigate to the tictactoe directory
 2) Get the gradle wrapper with this command: gradle wrapper --gradle-version 3.5
 3) Use spring boot to run the app: ./gradlew bootRun
+4) Alternatively you can use java -jar tictactoe-1.0.0-SNAPSHOT.jar if you want to execute from the jar
 
 TO RUN THE APP IN DOCKER:
-docker build -t tictactoe .
-docker run --name tictactoe -p 8080:8080 tictactoe
+1) docker build -t tictactoe .
+2) docker run --name tictactoe -p 8080:8080 tictactoe
 
 Known issues:
 Sometimes the test don't run, you can skip them for compiling, you can use:

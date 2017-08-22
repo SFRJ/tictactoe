@@ -26,7 +26,7 @@ public class TicTacToeController {
     }
 
 
-    @RequestMapping(value = {"/","tictactoe"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String welcomeToTicTacToe() {
         return "tictactoe";
     }

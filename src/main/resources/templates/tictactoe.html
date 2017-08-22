@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>TicTacToe</title>
+
+    <link href="../static/css/design.css"
+          th:href="@{/css/design.css}"
+          rel="stylesheet" media="screen" />
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+
+    <script type="text/javascript" src="../js/tictactoe.js"
+            th:src="@{/js/tictactoe.js}"></script>
+
+
+</head>
+<body ng-controller="displayPageController">
+<div id="player-1">PLAYER 1<br/>
+    {{gameBoardDto.player1}}<span style="display:inline-block"/>
+</div>
+<div id="game">
+
+    <div id="top-left" ng-click="playPage('topleft')">{{gameBoardDto.topleft}}<span style="display:inline-block"/></div>
+    <div id="top" ng-click="playPage('top')">{{gameBoardDto.top}}<span style="display:inline-block"/></div>
+    <div id="top-right" ng-click="playPage('topright')">{{gameBoardDto.topright}}<span style="display:inline-block"/></div>
+    <div id="left" ng-click="playPage('left')">{{gameBoardDto.left}}<span style="display:inline-block"/></div>
+    <div id="middle" ng-click="playPage('middle')">{{gameBoardDto.middle}}<span style="display:inline-block"/></div>
+    <div id="right" ng-click="playPage('right')">{{gameBoardDto.right}}<span style="display:inline-block"/></div>
+    <div id="bottom-left" ng-click="playPage('bottomleft')">{{gameBoardDto.bottomleft}}<span style="display:inline-block"/></div>
+    <div id="bottom" ng-click="playPage('bottom')">{{gameBoardDto.bottom}}<span style="display:inline-block"/></div>
+    <div id="bottom-right" ng-click="playPage('bottomright')">{{gameBoardDto.bottomright}}<span style="display:inline-block"/></div>
+</div>
+<div id="player-2">PLAYER 2<br/>
+    {{gameBoardDto.player2}}<span style="display:inline-block"/>
+</div>
+</body>
+</html>
